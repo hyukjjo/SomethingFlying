@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         while (_timeDown < _inputCountdown)
         {
             _timeDown += Time.deltaTime;
-            _countdownValueText.text = (_inputCountdown - _timeDown).ToString();
+            _countdownValueText.text = ((int)(_inputCountdown - _timeDown)).ToString();
             yield return null;
         }
 
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
         while (_timeDown < _inputCountdown)
         {
             _timeDown += Time.deltaTime;
-            _countdownValueText.text = (_inputCountdown - _timeDown).ToString();
+            _countdownValueText.text = ((int)(_inputCountdown - _timeDown)).ToString();
             yield return null;
         }
 
