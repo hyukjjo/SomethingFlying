@@ -11,10 +11,7 @@ public class DynamicCamera : MonoBehaviour
     private Transform characterPivotTop;
     private Transform characterPivotBottom;
     public new Camera camera;
-    public CinemachineVirtualCamera virtualCamera;
     public CinemachineTargetGroup targetGroup;
-
-
     public Transform backgroundQuadTransform;
 
 
