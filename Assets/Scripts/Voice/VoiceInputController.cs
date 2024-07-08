@@ -22,7 +22,7 @@ public class VoiceInputController : MonoBehaviour
     private float _minDb;
     [SerializeField]
     private float _maxDb;
-    [SerializeField] 
+    [SerializeField]
     private float _minAngle;
     [SerializeField]
     private float _maxAngle;
@@ -109,7 +109,7 @@ public class VoiceInputController : MonoBehaviour
         {
             case VoiceInputState.Idle:
                 // 아무런 input을 받지 않는 상태
-                
+
                 break;
 
             case VoiceInputState.ListeningForVolume:
@@ -158,21 +158,24 @@ public class VoiceInputController : MonoBehaviour
         currentState = newState;
         Debug.Log($"State changed to: {newState}");
 
-        if(currentState == VoiceInputState.Idle)
+        if (currentState == VoiceInputState.Idle)
         {
+            StopMicrophone(); // 마이크 중지
             _angleValueText.text = string.Empty;
             _forceValueText.text = string.Empty;
             _angleUI.SetActive(false);
             _forceUI.SetActive(false);
         }
-        else if(currentState == VoiceInputState.ListeningForPitch)
+        else if (currentState == VoiceInputState.ListeningForPitch)
         {
+            StartMicrophone(); // 마이크 시작
             _angleUI.SetActive(true);
         }
-        else if(currentState == VoiceInputState.ListeningForVolume)
+        else if (currentState == VoiceInputState.ListeningForVolume)
         {
+            StartMicrophone(); // 마이크 시작
             _forceUI.SetActive(true);
-        }    
+        }
     }
 
     // 볼륨 입력을 처리하는 함수
@@ -246,8 +249,6 @@ public class VoiceInputController : MonoBehaviour
         {
             Debug.Log("No peaks detected.");
         }
-
-        
     }
 
     private int ToNoteNumber(float freq)
@@ -266,5 +267,26 @@ public class VoiceInputController : MonoBehaviour
             }
         }
         return -1;
+    }
+
+    private void StartMicrophone()
+    {
+        if (Microphone.IsRecording(null))
+        {
+            Debug.LogWarning("Microphone is already recording.");
+            return;
+        }
+
+        audioSource.clip = Microphone.Start(null, true, 999, 44100);
+        while (!(Microphone.GetPosition(null) > 0)) ;
+        audioSource.Play();
+
+        Debug.Log("Microphone started.");
+    }
+
+    private void StopMicrophone()
+    {
+        Microphone.End(null);
+        Debug.Log("Microphone stopped.");
     }
 }

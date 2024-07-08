@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
-using MyBox;
-using Freya;
+//using MyBox;
+//using Freya;
 
 public class DynamicCamera : MonoBehaviour
 {

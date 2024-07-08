@@ -411,7 +411,7 @@ Transform:
   m_GameObject: {fileID: 196663120}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 450, y: -1.5, z: 0}
   m_LocalScale: {x: 1000, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1070,6 +1070,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583897262}
   m_CullTransparentMesh: 1
+--- !u!1 &670011246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 670011248}
+  - component: {fileID: 670011247}
+  m_Layer: 0
+  m_Name: ObstacleController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &670011247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670011246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75aa9661988f92844aee52bd5bad1816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitialObstaclesCount: 10
+  ObstacleDatas:
+  - ObstaclePrefab: {fileID: 6967771911085460914, guid: 96d1971a66636f64590790762d96217d,
+      type: 3}
+    ObstacleType: 0
+    MinimumX: 10
+    MaximumX: 300
+    MinimumY: 0
+    MaximumY: 0
+  - ObstaclePrefab: {fileID: 9193178199913220965, guid: 057fe1066a1e3dc4f8382f00ccf0b917,
+      type: 3}
+    ObstacleType: 1
+    MinimumX: 10
+    MaximumX: 300
+    MinimumY: 100
+    MaximumY: 200
+  - ObstaclePrefab: {fileID: 4435998208551653809, guid: ed26a0127afeaf44ebccd6e4b7dab2f6,
+      type: 3}
+    ObstacleType: 1
+    MinimumX: 10
+    MaximumX: 300
+    MinimumY: 50
+    MaximumY: 100
+--- !u!4 &670011248
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670011246}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &739897593
 GameObject:
   m_ObjectHideFlags: 3
@@ -1747,7 +1814,7 @@ MonoBehaviour:
   _maxFreq: 700
   _minDb: -80
   _maxDb: -30
-  _minAngle: 45
+  _minAngle: 0
   _maxAngle: 90
   _minForce: 1
   _maxForce: 10
@@ -2357,7 +2424,7 @@ Transform:
   m_GameObject: {fileID: 1430943372}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 1.5, z: 0}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2504,7 +2571,7 @@ Transform:
   m_GameObject: {fileID: 1533297151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 2.544449, z: 0}
+  m_LocalPosition: {x: -10, y: 1.044449, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2784,3 +2851,4 @@ SceneRoots:
   - {fileID: 905449402}
   - {fileID: 1430943376}
   - {fileID: 372335493}
+  - {fileID: 670011248}
