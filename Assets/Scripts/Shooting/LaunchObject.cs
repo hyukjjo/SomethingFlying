@@ -28,4 +28,12 @@ public class LaunchObject : MonoBehaviour
             GameManager.Instance.OpenSelectOption();
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            collision.gameObject.SetActive(false);
+        }
+    }
 }
