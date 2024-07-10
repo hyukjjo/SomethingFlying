@@ -4,7 +4,7 @@ using UnityEngine;
 public class Launcher : MonoBehaviour
 {
     [SerializeField]
-    private LaunchTarget _bear;
+    private LaunchObject _launchObject;
 
     [SerializeField]
     private float _launchForce = 0f; // 발사하는 힘의 크기
@@ -15,7 +15,12 @@ public class Launcher : MonoBehaviour
 
     private void Awake()
     {
-        _bearOriginPos = _bear.transform.position;
+        _bearOriginPos = _launchObject.transform.position;
+    }
+
+    public Transform GetLaunchObject()
+    {
+        return _launchObject.transform;
     }
 
     public void SetLaunchAngleValue(float angle)
@@ -28,9 +33,9 @@ public class Launcher : MonoBehaviour
         _launchForce = force;
     }
 
-    public void LaunchBear()
+    public void Launch()
     {
-        if (_bear != null)
+        if (_launchObject != null)
         {
             // 각도를 라디안으로 변환
             float angleInRadians = _launchAngle * Mathf.Deg2Rad;
@@ -39,13 +44,14 @@ public class Launcher : MonoBehaviour
             Vector2 direction = new Vector2(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians)).normalized;
 
             // _bear의 Rigidbody 컴포넌트 가져오기
-            Rigidbody2D bearRigidbody = _bear.GetComponent<Rigidbody2D>();
+            Rigidbody2D rigidbody = _launchObject.GetComponent<Rigidbody2D>();
 
-            if (bearRigidbody != null)
+            if (rigidbody != null)
             {
                 // 현재 속도를 초기화하고 새로운 힘 적용
-                bearRigidbody.velocity = Vector2.zero;
-                bearRigidbody.AddForce(direction * _launchForce * _launchForce, ForceMode2D.Impulse);
+                rigidbody.isKinematic = false;
+                rigidbody.velocity = Vector2.zero;
+                rigidbody.AddForce(direction * _launchForce * _launchForce, ForceMode2D.Impulse);
             }
             else
             {
@@ -60,9 +66,9 @@ public class Launcher : MonoBehaviour
 
     public void ResetLauncher()
     {
-        _bear.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        _bear.transform.position = _bearOriginPos;
-        _bear.transform.rotation = Quaternion.identity;
+        _launchObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        _launchObject.transform.position = _bearOriginPos;
+        _launchObject.transform.rotation = Quaternion.identity;
         _launchAngle = 0f;
         _launchForce = 0f;
     }

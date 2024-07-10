@@ -46,7 +46,7 @@ public class ObstacleController : MonoBehaviour
             Vector3 spawnPosition = new Vector3(randomX, randomY, transform.position.z);
 
             // Instantiate the obstacle prefab
-            Instantiate(selectedObstacleData.ObstaclePrefab, spawnPosition, Quaternion.identity);
+            Instantiate(selectedObstacleData.ObstaclePrefab, spawnPosition, Quaternion.identity, transform);
         }
     }
 

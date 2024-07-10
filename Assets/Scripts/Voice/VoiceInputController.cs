@@ -109,13 +109,10 @@ public class VoiceInputController : MonoBehaviour
         {
             case VoiceInputState.Idle:
                 // 아무런 input을 받지 않는 상태
-
                 break;
-
             case VoiceInputState.ListeningForVolume:
                 ProcessVolume();
                 break;
-
             case VoiceInputState.ListeningForPitch:
                 ProcessPitch();
                 break;
